@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.AccessControl;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
 using WebApplication1.CrossDomain;
 using WebApplication1.DataAccess;
 using WebApplication1.Models;
