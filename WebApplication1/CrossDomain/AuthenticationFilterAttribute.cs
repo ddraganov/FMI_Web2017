@@ -15,8 +15,9 @@ namespace WebApplication1.CrossDomain
         {
             IEnumerable<string> authValues;
             if (!actionContext.Request.Headers.TryGetValues("AuthToken", out authValues) ||
-                authValues.First() == "super-secure-token")
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                // Тук трябва да проверите стойността на хедъра дали е валиден token. За презентационни  цели ползваме статична стойност.
+                authValues.First() != "super-secure-token")
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);           
 
             return base.OnActionExecutingAsync(actionContext, cancellationToken);
         }

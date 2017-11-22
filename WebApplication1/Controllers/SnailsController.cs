@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public async Task<IEnumerable<Snail>> GetSnails()
         {
-            //throw new TypedDataSetGeneratorException();
+            //throw new System.Exception();
             return await _snailRepository.SelectAll();
         }
 
