@@ -1,40 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.AccessControl;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
+using WebApplication1.CrossDomain;
+using WebApplication1.DataAccess;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [AuthenticationFilter]
     public class SnailsController : ApiController
     {
-        private static List<Snail> _snails = new List<Snail>();
+        private readonly ISnailRepository _snailRepository;
 
-        [HttpGet]
-        public IEnumerable<Snail> GetSnails()
+        public SnailsController(ISnailRepository snailRepository)
         {
-            return _snails;
-        }
-
-        [HttpPost]
-        public Snail CreateSnail(Snail snail)
-        {
-            snail.Id = Guid.NewGuid().ToString();
-            _snails.Add(snail);
-            return snail;
+            _snailRepository = snailRepository;
         }
 
         [HttpGet]
-        public Snail GetSnail(string id)
+        public async Task<IEnumerable<Snail>> GetSnails()
         {
-            return _snails.First(x => x.Id == id);
+            //throw new System.Exception();
+            return await _snailRepository.SelectAll();
         }
+
+        //[HttpPost]
+        //public Snail CreateSnail(Snail snail)
+        //{
+        //    snail.Id = Guid.NewGuid().ToString();
+        //    _snails.Add(snail);
+        //    return snail;
+        //}
+
+        //[HttpGet]
+        //public Snail GetSnail(string id)
+        //{
+        //    return _snails.First(x => x.Id == id);
+        //}
 
         [HttpDelete]
         public void Opi([FromUri]int page, [FromBody]int sth)
