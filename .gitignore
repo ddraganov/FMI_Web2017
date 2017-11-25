@@ -195,3 +195,4 @@ nuget.exe
 *.transformed
 *.transformed.erb
 Berksfile.lock
+/.vs/*

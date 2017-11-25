@@ -8,14 +8,21 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    [AuthenticationFilter]
     public class SnailsController : ApiController
     {
         private readonly ISnailRepository _snailRepository;
 
+        // Ако това е потребител може да се изнесе в базов клас за контролерите за да не се повтаря във всички
+        private Snail _currentSnail;
+
         public SnailsController(ISnailRepository snailRepository)
         {
             _snailRepository = snailRepository;
+        }
+
+        public void SetCurrentSnail(Snail currentSnail)
+        {
+            _currentSnail = currentSnail;
         }
 
         [HttpGet]
