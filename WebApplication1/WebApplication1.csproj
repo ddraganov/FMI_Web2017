@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -126,7 +127,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\SnailsController.cs" />
     <Compile Include="CrossDomain\AuthenticationFilterAttribute.cs" />
+    <Compile Include="CrossDomain\ExampleDelegatingHandler.cs" />
     <Compile Include="CrossDomain\GlobalErrorHandler.cs" />
+    <Compile Include="CrossDomain\SnailIdentity.cs" />
     <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="DataAccess\ISnailRepository.cs" />
     <Compile Include="DataAccess\SnailRepository.cs" />

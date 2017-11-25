@@ -195,3 +195,8 @@ nuget.exe
 *.transformed
 *.transformed.erb
 Berksfile.lock
+/.vs/WebApplication1/v15/Server/sqlite3/storage.ide-wal
+/.vs/WebApplication1/v15/Server/sqlite3/storage.ide-shm
+/.vs/WebApplication1/v15/Server/sqlite3/storage.ide
+/.vs/WebApplication1/v15/Server/sqlite3/db.lock
+/.vs/WebApplication1/v15/Server/sqlite3

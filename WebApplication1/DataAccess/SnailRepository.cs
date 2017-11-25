@@ -42,5 +42,11 @@ namespace WebApplication1.DataAccess
         {
             throw new NotImplementedException();
         }
+
+        public Task<Snail> GetSnailByAuthToken(string authToken)
+        {
+            // Просто примерно. тук трябва да има обръщение към база данни/вънешн ресурс/друго за проверка на authToken
+            return Task.FromResult(new Snail() { Id = "xoxo", IsAlive = true, ShellRadius = 4.4 });
+        }
     }
 }

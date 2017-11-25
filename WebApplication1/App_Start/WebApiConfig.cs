@@ -22,6 +22,12 @@ namespace WebApplication1
             builder.RegisterType<SnailRepository>().As<ISnailRepository>().SingleInstance();
             builder.RegisterType<GlobalErrorHandler>().AsWebApiExceptionFilterFor<ApiController>();
 
+            // вече не го слагаме просто като атрибут а го регистрираме тук
+            builder.RegisterType<AuthenticationFilterAttribute>().AsWebApiActionFilterFor<SnailsController>().InstancePerRequest();
+
+            // регистрация на Delegating handler
+            builder.RegisterType<ExampleDelegatingHandler>().As<DelegatingHandler>().InstancePerRequest();
+
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterWebApiFilterProvider(config);
 
@@ -30,6 +36,9 @@ namespace WebApplication1
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            //добавяне на Delegating handler в конфигурацията. За съжаление тук не може без new :(
+            config.MessageHandlers.Add(new ExampleDelegatingHandler());
 
             config.Routes.MapHttpRoute(
                 name: "StuffApi",
