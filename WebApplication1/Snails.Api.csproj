@@ -130,13 +130,9 @@
     <Compile Include="CrossDomain\ExampleDelegatingHandler.cs" />
     <Compile Include="CrossDomain\GlobalErrorHandler.cs" />
     <Compile Include="CrossDomain\SnailIdentity.cs" />
-    <Compile Include="DataAccess\IRepository.cs" />
-    <Compile Include="DataAccess\ISnailRepository.cs" />
-    <Compile Include="DataAccess\SnailRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Snail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,8 +147,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <ProjectReference Include="..\Snails.Data\Snails.Data.csproj">
+      <Project>{df3c83fc-1868-418f-8da2-b7a7f6bed27a}</Project>
+      <Name>Snails.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

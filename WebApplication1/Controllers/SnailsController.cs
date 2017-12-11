@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Web.Http;
-using WebApplication1.CrossDomain;
-using WebApplication1.DataAccess;
-using WebApplication1.Models;
+using Snails.Data;
+using Snails.Data.Entities;
 
-namespace WebApplication1.Controllers
+namespace Snails.Controllers
 {
     public class SnailsController : ApiController
     {
@@ -28,8 +26,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public async Task<IEnumerable<Snail>> GetSnails()
         {
-            //throw new System.Exception();
-            return await _snailRepository.SelectAll();
+            return await _snailRepository.SelectAll().ConfigureAwait(false);
         }
 
         //[HttpPost]

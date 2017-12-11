@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{DED99A40-AD0C-4F46-97DB-8EB5E9F7F398}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snails.Api", "WebApplication1\Snails.Api.csproj", "{DED99A40-AD0C-4F46-97DB-8EB5E9F7F398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snails.Data", "Snails.Data\Snails.Data.csproj", "{DF3C83FC-1868-418F-8DA2-B7A7F6BED27A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DED99A40-AD0C-4F46-97DB-8EB5E9F7F398}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DED99A40-AD0C-4F46-97DB-8EB5E9F7F398}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DED99A40-AD0C-4F46-97DB-8EB5E9F7F398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF3C83FC-1868-418F-8DA2-B7A7F6BED27A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF3C83FC-1868-418F-8DA2-B7A7F6BED27A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF3C83FC-1868-418F-8DA2-B7A7F6BED27A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF3C83FC-1868-418F-8DA2-B7A7F6BED27A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
