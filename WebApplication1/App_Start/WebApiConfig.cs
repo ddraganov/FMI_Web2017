@@ -3,8 +3,8 @@ using System.Reflection;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
-using Snails.Controllers;
 using Snails.Data;
+using Snails.Data.Repositories;
 using WebApplication1.CrossDomain;
 
 namespace WebApplication1
@@ -15,12 +15,15 @@ namespace WebApplication1
         {
             // IoC
             var builder = new ContainerBuilder();
-            
+
+            builder.RegisterType<Settings>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<Migrator>().As<IDbMigrator>();
             builder.RegisterType<SnailRepository>().As<ISnailRepository>().SingleInstance();
+            builder.RegisterType<CompetitionRepository>().As<ICompetitionRepository>().SingleInstance();
             builder.RegisterType<GlobalErrorHandler>().AsWebApiExceptionFilterFor<ApiController>();
 
             // вече не го слагаме просто като атрибут а го регистрираме тук
-            builder.RegisterType<AuthenticationFilterAttribute>().AsWebApiActionFilterFor<SnailsController>().InstancePerRequest();
+            // builder.RegisterType<AuthenticationFilterAttribute>().AsWebApiActionFilterFor<SnailsController>().InstancePerRequest();
 
             // регистрация на Delegating handler
             builder.RegisterType<ExampleDelegatingHandler>().As<DelegatingHandler>().InstancePerRequest();
@@ -43,11 +46,11 @@ namespace WebApplication1
                 defaults: new { controller = "Snails", action = "Opi" }
             );
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
         }
     }
 }

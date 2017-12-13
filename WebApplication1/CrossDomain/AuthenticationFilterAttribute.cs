@@ -8,8 +8,8 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using Autofac.Integration.WebApi;
 using Snails.Controllers;
-using Snails.Data;
 using Snails.Data.Entities;
+using Snails.Data.Repositories;
 
 namespace WebApplication1.CrossDomain
 {

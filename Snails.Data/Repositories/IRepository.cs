@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Snails.Data
+namespace Snails.Data.Repositories
 {
     public interface IRepository<TEntityType, in TKeyType>
     {
