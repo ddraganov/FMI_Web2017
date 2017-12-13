@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using System.Web.Security;
 using Autofac.Integration.WebApi;
-using WebApplication1.Controllers;
-using WebApplication1.DataAccess;
-using WebApplication1.Models;
+using Snails.Controllers;
+using Snails.Data.Entities;
+using Snails.Data.Repositories;
 
 namespace WebApplication1.CrossDomain
 {
@@ -34,7 +32,7 @@ namespace WebApplication1.CrossDomain
 
             if (snail == null)
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            
+
             ((SnailsController)actionContext.ControllerContext.Controller).SetCurrentSnail(snail);
 
             await base.OnActionExecutingAsync(actionContext, cancellationToken);
