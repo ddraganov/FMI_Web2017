@@ -23,13 +23,16 @@ namespace WebApplication1
             builder.RegisterType<GlobalErrorHandler>().AsWebApiExceptionFilterFor<ApiController>();
 
             // вече не го слагаме просто като атрибут а го регистрираме тук
-            builder.RegisterType<AuthenticationFilterAttribute>().AsWebApiActionFilterFor<SnailsController>().InstancePerRequest();
+           //builder.RegisterType<AuthenticationFilterAttribute>().AsWebApiActionFilterFor<SnailsController>().InstancePerRequest();
 
             // регистрация на Delegating handler
             builder.RegisterType<ExampleDelegatingHandler>().As<DelegatingHandler>().InstancePerRequest();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+   
+            // register filter for method using attributes
             builder.RegisterWebApiFilterProvider(config);
+            builder.RegisterType<AuthenticationFilterAttribute>().PropertiesAutowired();
 
             IContainer container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);

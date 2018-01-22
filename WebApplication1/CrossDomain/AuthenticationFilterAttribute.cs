@@ -17,27 +17,15 @@ namespace WebApplication1.CrossDomain
 {
     public class AuthenticationFilterAttribute : ActionFilterAttribute, IAutofacActionFilter
     {
-        private readonly ISnailRepository _snailRepository;
-
-        public AuthenticationFilterAttribute(ISnailRepository snailRepository)
-        {
-            _snailRepository = snailRepository;
-        }
-
-        public override async Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
+        public override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
             IEnumerable<string> authValues;
-            if (!actionContext.Request.Headers.TryGetValues("AuthToken", out authValues))
+            if (!actionContext.Request.Headers.TryGetValues("AuthToken", out authValues) ||
+                // Тук трябва да проверите стойността на хедъра дали е валиден token. За презентационни  цели ползваме статична стойност.
+                authValues.First() != "super-secure-token")
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
 
-            Snail snail = await _snailRepository.GetSnailByAuthToken(authValues.First());
-
-            if (snail == null)
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            
-            ((SnailsController)actionContext.ControllerContext.Controller).SetCurrentSnail(snail);
-
-            await base.OnActionExecutingAsync(actionContext, cancellationToken);
+            return base.OnActionExecutingAsync(actionContext, cancellationToken);
         }
     }
 }

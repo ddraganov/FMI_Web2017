@@ -26,6 +26,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
+        [AuthenticationFilter]
         public async Task<IEnumerable<Snail>> GetSnails()
         {
             //throw new System.Exception();
@@ -40,11 +41,11 @@ namespace WebApplication1.Controllers
         //    return snail;
         //}
 
-        //[HttpGet]
-        //public Snail GetSnail(string id)
-        //{
-        //    return _snails.First(x => x.Id == id);
-        //}
+        [HttpGet]
+        public Snail GetSnail(string id)
+        {
+            return null;
+        }
 
         [HttpDelete]
         public void Opi([FromUri]int page, [FromBody]int sth)
