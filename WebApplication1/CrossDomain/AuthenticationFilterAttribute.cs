@@ -17,6 +17,14 @@ namespace WebApplication1.CrossDomain
 {
     public class AuthenticationFilterAttribute : ActionFilterAttribute, IAutofacActionFilter
     {
+        private readonly ISnailRepository _snailRepository;
+
+        public AuthenticationFilterAttribute(ISnailRepository snailRepository)
+        {
+            // Инджекнат по молба от студент, просто за пример. Затова не се ползва реално
+            _snailRepository = snailRepository;
+        }
+
         public override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
             IEnumerable<string> authValues;

@@ -26,7 +26,6 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        [AuthenticationFilter]
         public async Task<IEnumerable<Snail>> GetSnails()
         {
             //throw new System.Exception();

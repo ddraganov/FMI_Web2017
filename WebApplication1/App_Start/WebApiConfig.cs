@@ -32,7 +32,7 @@ namespace WebApplication1
    
             // register filter for method using attributes
             builder.RegisterWebApiFilterProvider(config);
-            builder.RegisterType<AuthenticationFilterAttribute>().PropertiesAutowired();
+            builder.RegisterType<AuthenticationFilterAttribute>().AsWebApiActionFilterFor<SnailsController>(c => c.GetSnails());
 
             IContainer container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
